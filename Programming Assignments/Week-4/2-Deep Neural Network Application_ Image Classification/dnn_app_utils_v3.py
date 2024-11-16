@@ -207,6 +207,9 @@ def linear_activation_forward(A_prev, W, b, activation):
         # Inputs: "A_prev, W, b". Outputs: "A, activation_cache".
         Z, linear_cache = linear_forward(A_prev, W, b)
         A, activation_cache = relu(Z)
+        
+    else:
+        print("\033[91mError! Please make sure you have passed the value correctly in the \"activation\" parameter")
     
     assert (A.shape == (W.shape[0], A_prev.shape[1]))
     cache = (linear_cache, activation_cache)
@@ -317,6 +320,9 @@ def linear_activation_backward(dA, cache, activation):
     elif activation == "sigmoid":
         dZ = sigmoid_backward(dA, activation_cache)
         dA_prev, dW, db = linear_backward(dZ, linear_cache)
+        
+    else:
+        print("\033[91mError! Please make sure you have passed the value correctly in the \"activation\" parameter")
     
     return dA_prev, dW, db
 
